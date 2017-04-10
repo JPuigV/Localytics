@@ -6,9 +6,9 @@
  * Time: 09:43
  */
 
-namespace jpuig\LocalyticsBundle\Push;
+namespace Jpuig\LocalyticsBundle\Push;
 
-use jpuig\LocalyticsBundle\Sender;
+use Jpuig\LocalyticsBundle\Sender;
 
 class Push
 {

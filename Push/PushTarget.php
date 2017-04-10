@@ -6,7 +6,7 @@
  * Time: 10:59
  */
 
-namespace jpuig\LocalyticsBundle\Push;
+namespace Jpuig\LocalyticsBundle\Push;
 
 
 class PushTarget

@@ -6,7 +6,7 @@
  * Time: 10:20
  */
 
-namespace jpuig\LocalyticsBundle;
+namespace Jpuig\LocalyticsBundle;
 
 
 class Sender

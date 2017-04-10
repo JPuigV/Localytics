@@ -11,8 +11,8 @@
     ],
     "license" : "MIT",
     "require" : {
-	"symfony/symfony": "2.8.*",
-	"php": ">=5.6"
+        "symfony/symfony": "2.8.*",
+        "php": ">=5.6"
     },
     "autoload" : {
         "psr-4" : {
