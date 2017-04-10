@@ -15,8 +15,8 @@
 	"php": ">=5.6"
     },
     "autoload" : {
-        "psr-0" : {
-            "Jpuig\\Localytics" : ""
+        "psr-4" : {
+            "Jpuig\\Localytics\\" : ""
         }
     },
     "target-dir" : "Jpuig/Localytics"
