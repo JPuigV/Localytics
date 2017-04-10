@@ -1,0 +1,3 @@
+jpuig_localytics_homepage:
+    path:     /
+    defaults: { _controller: JpuigLocalyticsBundle:Default:index }

@@ -1,0 +1,4 @@
+services:
+#    jpuig_localytics.example:
+#        class: Jpuig\LocalyticsBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

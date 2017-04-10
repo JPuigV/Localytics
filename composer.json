@@ -1,0 +1,23 @@
+{
+    "name" : "jpuig/localytics",
+    "description" : "Localytics bundle",
+    "type" : "symfony-bundle",
+    "authors" : [{
+        "name" : "Jordi Puig",
+        "email" : "puig@designweb.es"
+    }],
+    "keywords" : [
+        "localytics"
+    ],
+    "license" : "MIT",
+    "require" : {
+	"symfony/symfony": "2.8.*",
+	"php": ">=5.6"
+    },
+    "autoload" : {
+        "psr-0" : {
+            "Jpuig\\Localytics" : ""
+        }
+    },
+    "target-dir" : "Jpuig/Localytics"
+}
