@@ -24,6 +24,11 @@ class Configuration implements ConfigurationInterface
         // configure your bundle. See the documentation linked above for
         // more information on that topic.
 
+        $rootNode->children()
+            ->scalarNode('api_key')->end()
+            ->scalarNode('api_secret')->end()
+        ;
+
         return $treeBuilder;
     }
 }
