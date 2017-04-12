@@ -28,7 +28,7 @@ class Push
 
     public function send($appId,PushTarget $target,$message){
         $pushMessage = $this->buildPushMessage($target,$message);
-        $this->sender->send(self::ENDPOINT . $appId,$pushMessage);
+        return $this->sender->send(self::ENDPOINT . $appId,$pushMessage);
     }
 
     private function buildPushMessage(PushTarget $target,$message){
