@@ -8,7 +8,7 @@
 
 namespace Jpuig\LocalyticsBundle\Push;
 
-use Jpuig\LocalyticsBundle\Sender;
+use Jpuig\LocalyticsBundle\Common\Sender;
 
 class Push
 {
