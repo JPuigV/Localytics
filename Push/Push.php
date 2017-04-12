@@ -31,9 +31,9 @@ class Push
         return $this->sender->send(self::ENDPOINT . $appId,$pushMessage);
     }
 
-    private function buildPushMessage(PushTarget $target,$message){
+    private function buildPushMessage($id,PushTarget $target,$message){
         $payload = [
-            'request_id' => bin2hex(random_bytes(10)),
+            'request_id' => $id,
             'target_type' => $target->getType()
         ];
 
