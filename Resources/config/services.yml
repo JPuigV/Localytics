@@ -2,10 +2,10 @@ services:
 #    jpuig_localytics.example:
 #        class: Jpuig\LocalyticsBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
-jpuig_localytics.push:
-  class: Jpuig\LocalyticsBundle\Push\Push
-  arguments: ['@jpuig_localytics.sender']
+    jpuig_localytics.push:
+        class: Jpuig\LocalyticsBundle\Push\Push
+        arguments: ['@jpuig_localytics.sender']
 
-jpuig_localytics.sender:
-  class: Jpuig\LocalyticsBundle\Common\Sender
-  arguments: ['%jpuig_localytics.api_key%','%jpuig_localytics.api_secret%']
+    jpuig_localytics.sender:
+        class: Jpuig\LocalyticsBundle\Common\Sender
+        arguments: ['%jpuig_localytics.api_key%','%jpuig_localytics.api_secret%']
