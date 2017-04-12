@@ -38,7 +38,7 @@ class Push
         ];
 
         $pushMessage = [];
-        if(in_array($target->getType(),[self::TARGET_TYPE_PROFILE,self::TARGET_TYPE_AUDIENCE_ID])){
+        if(in_array($target->getType(),[self::TARGET_TYPE_CUSTOMER_ID,self::TARGET_TYPE_AUDIENCE_ID])){
             $pushMessage['target'] = $target->getId();
         }
         $pushMessage['alert'] = [
