@@ -42,7 +42,7 @@ class Push
             $pushMessage['target'] = (string)$target->getId();
         }
         $pushMessage['alert'] = [
-            'body' => 'message'
+            'body' => $message
         ];
         $pushMessage['ios'] = ['sound' => 'default.wav','badge' => 1];
 
