@@ -26,14 +26,14 @@ class Push
         $this->sender = $sender;
     }
 
-    public function send($appId,PushTarget $target,$message){
-        $pushMessage = $this->buildPushMessage($target,$message);
+    public function send($appId,$pushId,PushTarget $target,$message){
+        $pushMessage = $this->buildPushMessage($pushId,$target,$message);
         return $this->sender->send(self::ENDPOINT . $appId,$pushMessage);
     }
 
-    private function buildPushMessage($id,PushTarget $target,$message){
+    private function buildPushMessage($pushId,PushTarget $target,$message){
         $payload = [
-            'request_id' => $id,
+            'request_id' => $pushId,
             'target_type' => $target->getType()
         ];
 
