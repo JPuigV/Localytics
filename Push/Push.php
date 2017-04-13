@@ -20,18 +20,19 @@ class Push
     const ENDPOINT = 'https://messaging.localytics.com/v2/push/';
 
     private $sender;
+    private $deepLinkDomain;
 
     public function __construct(Sender $sender)
     {
         $this->sender = $sender;
     }
 
-    public function send($appId,$pushId,PushTarget $target,$message){
-        $pushMessage = $this->buildPushMessage($pushId,$target,$message);
+    public function send($appId,$pushId,PushTarget $target,$message,$deepLink = null){
+        $pushMessage = $this->buildPushMessage($pushId,$target,$message,$deepLink);
         return $this->sender->send(self::ENDPOINT . $appId,$pushMessage);
     }
 
-    private function buildPushMessage($pushId,PushTarget $target,$message){
+    private function buildPushMessage($pushId,PushTarget $target,$message,$deepLink){
         $payload = [
             'request_id' => $pushId,
             'target_type' => $target->getType()
@@ -44,7 +45,13 @@ class Push
         $pushMessage['alert'] = [
             'body' => $message
         ];
-        $pushMessage['ios'] = ['sound' => 'default.wav','badge' => 1];
+        
+        $extra = [];
+        if(!empty($deepLink)){
+            $extra = ['ll_deep_link_url' => $deepLink ]
+        }
+        $pushMessage['ios'] = ['sound' => 'default.wav','badge' => 1,'extra' => $extra];
+        
 
         $payload['messages'] = [$pushMessage];
 
