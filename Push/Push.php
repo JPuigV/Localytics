@@ -48,7 +48,7 @@ class Push
         
         $extra = [];
         if(!empty($deepLink)){
-            $extra = ['ll_deep_link_url' => $deepLink ]
+            $extra = ['ll_deep_link_url' => $deepLink ];
         }
         $pushMessage['ios'] = ['sound' => 'default.wav','badge' => 1,'extra' => $extra];
         
