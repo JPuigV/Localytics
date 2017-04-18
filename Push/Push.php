@@ -27,12 +27,12 @@ class Push
         $this->sender = $sender;
     }
 
-    public function send($appId,$pushId,PushTarget $target,$message,$deepLink = null){
-        $pushMessage = $this->buildPushMessage($pushId,$target,$message,$deepLink);
+    public function send($appId,$pushId,PushTarget $target,$message,$messageTitle,$deepLink = null){
+        $pushMessage = $this->buildPushMessage($pushId,$target,$message,$messageTitle,$deepLink);
         return $this->sender->send(self::ENDPOINT . $appId,$pushMessage);
     }
 
-    private function buildPushMessage($pushId,PushTarget $target,$message,$deepLink){
+    private function buildPushMessage($pushId,PushTarget $target,$message,$messageTitle,$deepLink){
         $payload = [
             'request_id' => $pushId,
             'target_type' => $target->getType()
@@ -43,7 +43,8 @@ class Push
             $pushMessage['target'] = (string)$target->getId();
         }
         $pushMessage['alert'] = [
-            'body' => $message
+            'body' => $message,
+            'title' => $messageTitle,
         ];
         
         $extra = [];
@@ -51,7 +52,7 @@ class Push
             $extra = ['ll_deep_link_url' => $deepLink ];
         }
         $pushMessage['ios'] = ['sound' => 'default.wav','badge' => 1,'extra' => $extra];
-        
+        $pushMessage['android'] = ['extra' => $extra];
 
         $payload['messages'] = [$pushMessage];
 
