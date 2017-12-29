@@ -20,7 +20,6 @@ class Push
     const ENDPOINT = 'https://messaging.localytics.com/v2/push/';
 
     private $sender;
-    private $deepLinkDomain;
 
     public function __construct(Sender $sender)
     {
@@ -33,29 +32,17 @@ class Push
     }
 
     private function buildPushMessage($pushId,PushTarget $target,$message,$messageTitle,$deepLink){
-        $payload = [
-            'request_id' => $pushId,
-            'target_type' => $target->getType()
-        ];
 
-        $pushMessage = [];
-        if(in_array($target->getType(),[self::TARGET_TYPE_CUSTOMER_ID,self::TARGET_TYPE_AUDIENCE_ID])){
-            $pushMessage['target'] = (string)$target->getId();
-        }
-        $pushMessage['alert'] = [
-            'body' => $message,
-            'title' => $messageTitle,
-        ];
-        
-        $extra = [];
-        if(!empty($deepLink)){
-            $extra = ['ll_deep_link_url' => $deepLink ];
-        }
-        $pushMessage['ios'] = ['sound' => 'default.wav','badge' => 1,'extra' => $extra];
-        $pushMessage['android'] = ['extra' => $extra];
+        $pushPayload = new PushPayload($pushId,$target->getType());
+        $pushMessage = new PushMessage(
+            $message,
+            $messageTitle,
+            in_array($target->getType(),[self::TARGET_TYPE_CUSTOMER_ID,self::TARGET_TYPE_AUDIENCE_ID]) ? $target->getId() : null,
+            'default.wav',
+            1,
+            $deepLink);
+        $pushPayload->addMessage($pushMessage);
 
-        $payload['messages'] = [$pushMessage];
-
-        return json_encode($payload);
+        return $pushPayload->getJSONEncoded();
     }
 }
