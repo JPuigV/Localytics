@@ -39,8 +39,13 @@ class PushMessage
             'title' => $this->title,
         ];
 
-        $pushMessage['ios'] = $this->getIOSParametersAsArray();
-        $pushMessage['android'] = $this->getAndroidParametersAsArray();
+        if($iOSParameters = $this->getIOSParametersAsArray()){
+            $pushMessage['ios'] = $iOSParameters;
+        }
+
+        if($androidParameters = $this->getAndroidParametersAsArray()){
+            $pushMessage['android'] = $androidParameters;
+        }
 
         return $pushMessage;
     }
